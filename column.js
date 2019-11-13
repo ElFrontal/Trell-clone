@@ -94,20 +94,20 @@ const Column = {
             return
         }
     
-        if (this.parentElement === Column.dragged.parentElement) {
-            const column = Array.from(this.parentElement.querySelectorAll('.column'))
-            const indexA = column.indexOf(this)
-            const indexB = column.indexOf(Column.dragged)
+        // if (this.parentElement === Column.dragged.parentElement) {
+        //     const column = Array.from(this.parentElement.querySelector('.column'))
+        //     const indexA = column.indexOf(this)
+        //     const indexB = column.indexOf(Column.dragged)
     
-            if (indexA < indexB) {
-                this.parentElement.insertBefore(Column.dragged, this)
-            }
+        //     if (indexA < indexB) {
+        //         this.parentElement.insertBefore(Column.dragged, this)
+        //     }
     
-            else {
-                this.parentElement.insertBefore(Column.dragged, this.nextElementSibling)
-            }
-        }
-    
+        //     else {
+        //         this.parentElement.insertBefore(Column.dragged, this.nextElementSibling)
+        //     }
+        // }
+        
         else {
             this.parentElement.insertBefore(Column.dragged, this)
         }
