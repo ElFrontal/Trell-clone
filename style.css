@@ -113,7 +113,7 @@ body {
 }
 
 .column.dragged {
-	opacity: 0.4;
+    opacity: 0.4;
 }
 
 .action {
@@ -121,7 +121,7 @@ body {
 }
 
 .column.under {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .note.under {
