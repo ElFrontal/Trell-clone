@@ -35,6 +35,13 @@ const Column = {
         columnElement.addEventListener('dragenter', Column.dragenter)    
         columnElement.addEventListener('dragover', Column.dragover)
         columnElement.addEventListener('dragleave', Column.dragleave)    
+        columnElement.addEventListener('drop', function (evt) {
+            evt.stopPropagation()
+
+            if (Note.dragged) {
+            return columnElement.querySelector('[data-notes]').append(Note.dragged)
+            }
+        })
         columnElement.addEventListener('drop', Column.drop)
     },
 
@@ -47,13 +54,17 @@ const Column = {
 
     dragend (evt) {
         evt.stopPropagation()
-        
+
         Column.dragged = null
         this.classList.remove('dragged')
     
-        document 
+        document
             .querySelectorAll('.column')
             .forEach( x => x.classList.remove('under'))
+
+        document
+            .querySelectorAll('.note')
+            .forEach( y => y.classList.remove('under'))
     },
 
     dragenter (evt) {
@@ -79,12 +90,6 @@ const Column = {
     },
 
     drop (evt) {
-        evt.stopPropagation()
-
-        if (Note.dragged) {
-            return columnElement.querySelector('[data-notes]').append(Note.dragged)
-        }
-    
         if (this === Column.dragged) {
             return
         }
