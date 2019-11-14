@@ -1,29 +1,18 @@
-document
-    .querySelectorAll('.column')
-    .forEach(Column.process)
+// document
+//     .querySelectorAll('.column')
+//     .forEach(Column.process)
+
+// document
+//     .querySelectorAll('.note')
+//     .forEach(Note.process)
+
+Application.load()
 
 document
     .querySelector('[data-action-addColumn]')
     .addEventListener('click', function (evt) {
-        const columnElement = document.createElement('div')
-        columnElement.classList.add('column')
-        columnElement.setAttribute('draggable', 'true')
-        columnElement.setAttribute('data-column-id', Column.idCounter)
-
-        columnElement.innerHTML = 
-        `<p class="column-header">В плане</p>
-        <div data-notes></div>
-        <p class="column-footer">
-            <span data-action-addNote class="action">+ Добавить карточку</span>
-        </p>`
-
-        Column.idCounter++
-
+        const columnElement = Column.create()
         document.querySelector('.columns').append(columnElement)
 
-        Column.process(columnElement)
+        Application.save()
     })
-
-document
-    .querySelectorAll('.note')
-    .forEach(Note.process)
